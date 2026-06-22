@@ -1,0 +1,33 @@
+services:
+  db:
+    image: mariadb:10.6
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: espodb
+      MYSQL_USER: espouser
+      MYSQL_PASSWORD: password123
+    volumes:
+      - ./storage/db:/var/lib/mysql
+
+  espocrm:
+    image: espocrm/espocrm:latest
+    ports:
+      - "8080:80"
+    environment:
+      ESPOCRM_DATABASE_HOST: db
+      ESPOCRM_DATABASE_USER: espouser
+      ESPOCRM_DATABASE_PASSWORD: password123
+      ESPOCRM_DATABASE_NAME: espodb
+    volumes:
+      - ./storage/espocrm:/var/www/html
+    depends_on:
+      - db
+
+  gateway-api:
+    build: ./api
+    ports:
+      - 8000:8000
+    environment:
+      CRM_URL: http://espocrm
+    depends_on:
+      - espocrm
