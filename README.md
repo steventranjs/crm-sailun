@@ -16,4 +16,6 @@ curl -X POST 'http://api-beta.potensus.io/submit-lead' \
 
 2. Vào lại CRM, verify lead được tạo ở đây: https://crm-beta.potensus.io/#Lead
 
-3. Nếu execute curl 2 lần sẽ bị lỗi `duplicate (409)`. Vào lại [trang leads](https://crm-beta.potensus.io/#Lead), select lead mới tạo, click `Action` > `Remove` để delete lead. Sau đó sẽ execute tạo lead lại OK, ko bị lỗi duplicate nữa
+3. Nếu execute curl 2 lần sẽ bị lỗi `duplicate (409)`. 
+
+Vào lại [trang leads](https://crm-beta.potensus.io/#Lead), select lead mới tạo, click `Action` > `Remove` để delete lead. Sau đó sẽ execute tạo lead lại OK, ko bị lỗi duplicate nữa
