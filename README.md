@@ -21,3 +21,9 @@ curl -X POST 'http://api-beta.potensus.io/submit-lead' \
   - Vào lại [trang leads](https://crm-beta.potensus.io/#Lead)
   - Select lead mới tạo, click `Action` > `Remove` để delete lead. 
   - Sau đó sẽ execute tạo lead lại OK, ko bị lỗi duplicate nữa
+
+Như vậy các website client sẽ tạo form và submit vào `http://localhost:8000/submit-lead` với các field giống y hệ như trên
+
+## Tham khảo
+- Docs: https://docs.espocrm.com/
+- Dùng Google Gemini để hiểu mối liên hệ giữa `Accounts`, `Contacts`, `Leads` và `Opportunities`.
