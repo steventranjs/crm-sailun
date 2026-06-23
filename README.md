@@ -3,7 +3,7 @@
 CRM quản lý khách hàng tiềm năng
 
 ## Quản Lý CRM
-Vào https://crm-beta.potensus.io/ login = admin credentials
+Login vào https://crm-beta.potensus.io/
 
 ## Tạo leads bằng CURL
 
