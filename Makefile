@@ -1,6 +1,7 @@
 .PHONY: build
 
 docker-reset:
+	docker compose down
 	rm -rf storage
 	docker system prune -f
 

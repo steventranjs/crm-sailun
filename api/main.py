@@ -12,8 +12,8 @@ CRM_URL = os.getenv("CRM_URL")
 def submit_lead(data: dict):
     client = EspoAPI(CRM_URL, os.getenv("CRM_API_KEY"))
     # data = {
-    #     'title': 'Mr',
-    #     'salutationName': 'John Tran',
+    #     'title': 'Giam Doc',
+    #     'salutationName': 'Mr.',
     #     'firstName': 'John',
     #     'middleName': 'string',
     #     'lastName': 'string',
@@ -21,16 +21,16 @@ def submit_lead(data: dict):
     #     'phoneNumber': '+11111-22222-33333',
     #     'emailAddress': 'test@abc.com',
     #     'description': 'Toi muon mua 1000 cai banh xe',
-    #     'source': 'xxx.com',
+    #     'source': 'Web Site',
     #     'opportunityAmount': 1000,
     #     'opportunityAmountCurrency': 'USD',
-    #     'website': 'some-website-client',
-    #     'addressStreet': 'string',
-    #     'addressCity': "string",
-    #     'addressState': 'string',
-    #     'addressCountry': 'string',
-    #     'addressPostalCode': 'string',
+    #     'website': 'vinhome.vn',
+    #     'addressStreet': 'Nguyen Huu Canh',
+    #     'addressCity': "Ho Chi Minh",
+    #     'addressState': 'Ho Chi Minh',
+    #     'addressCountry': 'Vietnam',
+    #     'addressPostalCode': '123',
     # }
 
-    client.request('POST', 'Lead', data)
+    response = client.request('POST', 'Lead', data)
     return response.json()
