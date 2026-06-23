@@ -3,6 +3,7 @@ import requests
 import os
 
 from espo_api import EspoAPI
+import json
 
 app = FastAPI()
 
@@ -33,4 +34,4 @@ def submit_lead(data: dict):
     # }
 
     response = client.request('POST', 'Lead', data)
-    return response.json()
+    return response
