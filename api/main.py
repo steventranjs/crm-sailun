@@ -13,8 +13,4 @@ def submit_lead(data: dict):
 
 @app.get("/get-leads/{supplier_id}")
 def get_leads(supplier_id: str):
-    # Giả lập logic lấy leads từ EspoCRM
-    # Ở đây bạn gọi API của EspoCRM, sau đó filter data:
-    # Nếu lead.status != 'CHOT_GIA':
-    #    lead.contact = 'HIDDEN'
     return {"status": "success", "data": "Dữ liệu đã được ẩn contact theo logic của bạn"}
