@@ -7,6 +7,15 @@ import json
 
 app = FastAPI()
 
+# Cấu hình CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Hoặc liệt kê domain cụ thể: ["https://site-a.com", "https://site-b.com"]
+    allow_credentials=True,
+    allow_methods=["*"], # Cho phép tất cả phương thức (POST, OPTIONS, GET...)
+    allow_headers=["*"], # Cho phép tất cả header
+)
+
 CRM_URL = os.getenv("CRM_URL")
 
 @app.post("/submit-lead")
