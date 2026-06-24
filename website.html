@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
@@ -18,34 +18,40 @@
 <div class="form-container">
     <form id="leadForm">
         <div class="row">
-            <input type="text" id="title" placeholder="Chức vụ (vd: Giam Doc)">
+            <input type="text" id="title" placeholder="Job Title (e.g. Director)">
             <select id="salutationName"><option>Mr.</option><option>Ms.</option><option>Mrs.</option></select>
         </div>
-        <input type="text" id="firstName" placeholder="Tên" required>
-        <input type="text" id="middleName" placeholder="Tên đệm">
-        <input type="text" id="lastName" placeholder="Họ" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="text" id="phone" placeholder="Số điện thoại" required>
+        <input type="text" id="firstName" placeholder="First Name" required>
+        <input type="text" id="middleName" placeholder="Middle Name">
+        <input type="text" id="lastName" placeholder="Last Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
         <input type="text" id="website" placeholder="Website">
         <div class="row">
-            <input type="number" id="oppAmount" placeholder="Số tiền (Amount)">
-            <input type="text" id="currency" placeholder="Đơn vị (USD)" value="USD">
+            <input type="number" id="oppAmount" placeholder="Opportunity Amount">
+            <input type="text" id="currency" placeholder="Currency (e.g. USD)" value="USD">
         </div>
-        <input type="text" id="street" placeholder="Địa chỉ (Đường)">
+        <input type="text" id="street" placeholder="Street Address">
         <div class="row">
-            <input type="text" id="city" placeholder="Thành phố">
-            <input type="text" id="state" placeholder="Bang/Tỉnh">
+            <input type="text" id="city" placeholder="City">
+            <input type="text" id="state" placeholder="State/Province">
         </div>
         <div class="row">
-            <input type="text" id="country" placeholder="Quốc gia">
-            <input type="text" id="postalCode" placeholder="Mã bưu điện">
+            <input type="text" id="country" placeholder="Country">
+            <input type="text" id="postalCode" placeholder="Postal Code">
         </div>
-        <textarea id="description" placeholder="Mô tả nhu cầu" rows="3"></textarea>
-        <button type="submit" id="submitBtn">Gửi thông tin</button>
+        <textarea id="description" placeholder="Requirements / Description" rows="3"></textarea>
+        <button type="submit" id="submitBtn">Submit Lead</button>
     </form>
 </div>
 
-<div id="statusModal" class="modal"><div class="modal-content"><h3 id="modalTitle"></h3><p id="modalMsg"></p><button onclick="closeModal()">Đóng</button></div></div>
+<div id="statusModal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">Processing...</h3>
+        <p id="modalMsg"></p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
 
 <script>
     const form = document.getElementById('leadForm');
@@ -62,7 +68,7 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         btn.disabled = true;
-        showModal('Đang xử lý', '...');
+        showModal('Processing', 'Please wait while we submit your request...');
 
         const data = {
             title: document.getElementById('title').value,
@@ -93,13 +99,13 @@
             });
 
             if (response.ok) {
-                showModal('Thành công', 'Thông tin đã được lưu!');
+                showModal('Success!', 'Your information has been submitted successfully.');
                 form.reset();
             } else {
                 throw new Error();
             }
         } catch (err) {
-            showModal('Lỗi', 'Không thể gửi dữ liệu, vui lòng kiểm tra lại.');
+            showModal('Error', 'Unable to submit data. Please contact admin or try again later.');
         } finally {
             btn.disabled = false;
         }
